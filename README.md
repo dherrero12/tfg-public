@@ -1,61 +1,20 @@
-# tfg
+# Human Behavior Modeling with Passive Monitoring
 
-## watchdog
-https://thepythoncorner.com/posts/2019-01-13-how-to-create-a-watchdog-in-python-to-look-for-filesystem-changes/
-https://stackoverflow.com/questions/67140561/handling-disconnects-in-python-ftplib-ftp-transfers-file-upload
+## Description
 
-### watchdog code
-https://thepythoncorner.com/posts/2019-01-13-how-to-create-a-watchdog-in-python-to-look-for-filesystem-changes/
+This repository includes the code of each of the component programs that are part of the programmatic solution for the "Human Behavior Modeling with Passive Monitoring" Final Degree Project (TFG) by Diego Herrero Quevedo for the Degree in Data Science and Engineering. This TFG was jointly supervised by Pablo Martínez Olmos and Antonio Artés Rodríguez.
 
-### install python on windows 7
-https://www.youtube.com/watch?v=aAa_EtK5OCI
+## Structure
 
-### install virtualenv, vpn, ssh, git, postgresql
-https://superuser.com/questions/296873/install-libpq-dev-on-mac-os
+Most of the modules in which the repository is structured correspond to one of the functional components of the solution. The modules are structurally divided in two contexts. The first context relates to the creation of an unified data matrix that is adequeate to solve a regression problem. The second context relates to the solution to the regression problem itself.
 
-### startup with bam
-https://www.howtogeek.com/138159/how-to-enable-programs-and-custom-scripts-to-run-at-boot/
-https://www.computerhope.com/issues/ch000322.htm#windows-7
-connect to vpn and execut python script directly
+### Data matrix creation
 
-### upload to ibm cloud object storage 
+The modules that are involved in the creation of the unified data matrix for regression are the following:
 
-#### encrypted with hpcs
-
-#### vpn service to use private endpoint
-
-### to postgre database
-	
-#### encrypted with kp
-
-#### connecting as external app from code engine
-https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app
-
-#### using sqlalchemy to simplify flow
-https://www.compose.com/articles/using-postgresql-through-sqlalchemy/
-
-#### consume in code engine to input
-https://cloud.ibm.com/docs/codeengine?topic=codeengine-subscribe-cos-tutorial
-https://cloud.ibm.com/docs/codeengine?topic=codeengine-eventing-cosevent-producer
-https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-text-analysis-code-engine#:~:text=IBM%20Cloud%C2%AE%20Code%20Engine%20is%20a%20fully%20managed%2C%20serverless,you%20from%20your%20source%20code.
-
-#### conteinarize docker image
-
-## organize everything in .dotenv
-
-## automatic pull with webhook
-https://stackoverflow.com/questions/10542158/how-do-you-do-an-automatic-git-pull-on-remote-server
-
-## train rnn-based models directly from database
-https://medium.com/swlh/using-postgres-as-a-dataloader-with-pytorch-bba0d5cbe1fa
-https://www.google.com/search?q=dataloader+pytorch+for+sequences&rlz=1C5GCEM_en__1003__1003&oq=dataloader+pytorch+for+sequences&aqs=chrome..69i57j0i546l3.6311j0j4&sourceid=chrome&ie=UTF-8
-https://stackoverflow.com/a/55164899
-	
-### to CSV from database
-https://stackoverflow.com/questions/50556537/flatten-dataframe-into-a-single-row
-
-### reducing the size of images for big packages when necessary
-https://towardsdatascience.com/how-to-shrink-numpy-scipy-pandas-and-matplotlib-for-your-data-product-4ec8d7e86ee4
-
-## convert to simple columns to Timestamp
-https://datatofish.com/strings-to-datetime-pandas/
+- [csv](./csv): data unification component. Extracts unified data matrix from the Databases for PostgreSQL instance.
+- [postgre](./postgre): data processing component. Updates the Databases for PostgreSQL instance from data arriving to a COS bucket.
+- [startup](./startup): initialization script for local execution. Connects to the local machine through VPN to IBM Cloud and initializes the watchdog component on local execution.
+- [toolchain](./toolchain): continuous delivery component. Tracks changes in the directory and rebuilds Code Engine jobs when a new change is pushed.
+- [utils](./utils): utilities component. Implements functionality for authenticating to an IBM Cloud account and connecting to a COS instance.
+- [watchdog](./watchdog): data extraction component. Observes export directories and uploads any data written to the directory to a COS instance.
