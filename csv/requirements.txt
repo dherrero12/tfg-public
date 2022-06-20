@@ -1,0 +1,6 @@
+Cython
+asyncpg
+scipy
+pandas
+python-dotenv
+requests
