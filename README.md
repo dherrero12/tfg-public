@@ -23,6 +23,6 @@ The modules that are involved in the creation of the unified data matrix for reg
 
 The scripts involved in solving the regression problem are contained in the module [data](./data). These include:
 
-- process.ipynb: data matrix processing component. Performs data exploration and processing tasks to prepare the data matrix for model training.
-- train.ipynb: model evaluation component. Executes the nested cross-validation scheme for model evaluation.
-- visualize.ipynb: results visualization component. Depicts evaluation resuls in plots and tables that are easy to interpret and analyze.
+- ```process.ipynb```: data matrix processing component. Performs data exploration and processing tasks to prepare the data matrix for model training.
+- ```train.ipynb```: model evaluation component. Executes the nested cross-validation scheme for model evaluation.
+- ```visualize.ipynb```: results visualization component. Depicts evaluation resuls in plots and tables that are easy to interpret and analyze.
