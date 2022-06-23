@@ -25,4 +25,4 @@ The scripts involved in solving the regression problem are contained in the modu
 
 - ```process.ipynb```: data matrix processing component. Performs data exploration and processing tasks to prepare the data matrix for model training.
 - ```train.ipynb```: model evaluation component. Executes the nested cross-validation scheme for model evaluation.
-- ```visualize.ipynb```: results visualization component. Depicts evaluation resuls in plots and tables that are easy to interpret and analyze.
+- ```visualize.ipynb```: results visualization component. Depicts evaluation results in plots and tables that are easy to interpret and analyze.
